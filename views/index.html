@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/public/styles.css">
+        <title>Exercise Tracker</title>
+    </head>
+    <body>
+        <h1>Exercise tracker</h1>
+        <p>Enter a new username, you'll receive a JSON with an _id, take that id and use it to add exercies.<br>
+        Example: {"user_name":"WesamKhalil","_id":"6005880b2cec5d1ff819acce"}</p>
+        <p>To add an exercise including user id, description and duration are mandatory. If no date is passed then it will use the current date by default.
+        The JSON you will get back will look like:<br>
+        {"_id":"6004cd874909e036bc40c52c","username":"potofbeans","date":"Sat Jan 09 2021","duration":"5","description":"Push ups"}</p>
+        <div class="form-cont">
+            <!--Register new user-->
+            <form action="/api/exercise/new_user" method="POST" class="user">
+                <h3>Create a new user</h3>
+                <input type="text" name="username" placeholder="username" required>
+                <button>Submit</button>
+            </form>
+            <!--Add exercises to existing user-->
+            <form action="/api/exercise/add" method="POST" class="exercise">
+                <h3>Add exercises</h3>
+                <input type="text" name="userId" placeholder="user id*" required>
+                <input type="text" name="description" placeholder="description*" required>
+                <input type="number" name="minutes" placeholder="duration (mins)*" required>
+                <input type="date" name="date" placeholder="date (YYYY-MM-DD)">
+                <button>Submit</button>
+            </form>
+        </div>
+        <p>To look up your log of exercises type in the URL '/api/exercise/log?userId=' enter user id here at the end.
+            Other query options are 'from' which specifies exercises after a given date, 'to' which specifies exercises 
+            before a given date, both 'from' and 'to' take inputs in the form 'YYYY-MM-DD', and then the 'limit' query which specifies the number of exercises shown in your log.
+        </p>
+        <p>An example is '/api/exercise/log?userId=6004cd874909e036bc40c52c&from=2021-01-15&to=2021-01-18&limit=2'<br>
+        And you'll be returned something like:<br>
+        {"_id":"6004cd874909e036bc40c52c","username":"potofbeans","from":"Fri Jan 15 2021","to":"Mon Jan 18 2021","count":2,"log":[{"description":"Sit ups","duration":5,"date":"Mon Jan 18 2021"},{"description":"Push ups","duration":1,"date":"Sun Jan 17 2021"}]}</p>
+    </body>
+</html>
