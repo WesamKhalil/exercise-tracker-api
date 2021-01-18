@@ -12,7 +12,7 @@
         Example: {"user_name":"WesamKhalil","_id":"6005880b2cec5d1ff819acce"}</p>
         <p>To add an exercise including user id, description and duration are mandatory. If no date is passed then it will use the current date by default.
         The JSON you will get back will look like:<br>
-        {"_id":"6004cd874909e036bc40c52c","username":"potofbeans","date":"Sat Jan 09 2021","duration":"5","description":"Push ups"}</p>
+        {"_id":"6004cd874909e036bc40c52c",<br>"username":"potofbeans",<br>"date":"Sat Jan 09 2021",<br>"duration":"5",<br>"description":"Push ups"}</p>
         <div class="form-cont">
             <!--Register new user-->
             <form action="/api/exercise/new_user" method="POST" class="user">
@@ -30,12 +30,12 @@
                 <button>Submit</button>
             </form>
         </div>
-        <p>To look up your log of exercises type in the URL '/api/exercise/log?userId=' enter user id here at the end.
+        <p>To look up your log of exercises append this to te end of your URL '/api/exercise/log?userId=' enter user id here at the end.
             Other query options are 'from' which specifies exercises after a given date, 'to' which specifies exercises 
             before a given date, both 'from' and 'to' take inputs in the form 'YYYY-MM-DD', and then the 'limit' query which specifies the number of exercises shown in your log.
         </p>
-        <p>An example is '/api/exercise/log?userId=6004cd874909e036bc40c52c&from=2021-01-15&to=2021-01-18&limit=2'<br>
-        And you'll be returned something like:<br>
-        {"_id":"6004cd874909e036bc40c52c","username":"potofbeans","from":"Fri Jan 15 2021","to":"Mon Jan 18 2021","count":2,"log":[{"description":"Sit ups","duration":5,"date":"Mon Jan 18 2021"},{"description":"Push ups","duration":1,"date":"Sun Jan 17 2021"}]}</p>
+        <p>An example is:<br>'/api/exercise/log?userId=6004cd874909e036bc40c52c&from=2021-01-15&to=2021-01-18&limit=2'<br>
+        And you'll be returned something similar to:<br>
+        {"_id":"6004cd874909e036bc40c52c",<br>"username":"potofbeans",<br>"from":"Fri Jan 15 2021",<br>"to":"Mon Jan 18 2021",<br>"count":2,<br>"log":[{"description":"Sit ups","duration":5,"date":"Mon Jan 18 2021"},{"description":"Push ups","duration":1,"date":"Sun Jan 17 2021"}]}</p>
     </body>
 </html>
